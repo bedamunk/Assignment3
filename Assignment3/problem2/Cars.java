@@ -19,6 +19,9 @@ public class Cars {
 		// private instance variables with aggregation type relationship
 		protected String carType;
 		
+		public Cars() {
+			
+		}
 		// constructor takes make model vinNumber and carType
 		public Cars(String make, String model, int vinNumber, String carType) {
 			// set variables equal to the user input

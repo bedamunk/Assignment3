@@ -3,7 +3,9 @@ public final class Sedan extends Cars {
 	// instance variables
 	protected int numDoors;
 	protected int trunkSize;
-	
+	public Sedan() {
+		super();
+	}
 	// constructors
 	public Sedan(String make, String model, int vinNumber, String carType, int numDoors, int trunkSize) {
 		super (make, model, vinNumber, carType);
