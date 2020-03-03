@@ -1,3 +1,4 @@
+package problem2;
 import problem2.Sedan;
 import problem2.Sports;
 import problem2.Cars;

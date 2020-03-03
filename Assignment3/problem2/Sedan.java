@@ -1,7 +1,8 @@
+package problem2;
 public final class Sedan extends Cars {
 	// instance variables
-	private int numDoors;
-	private int trunkSize;
+	protected int numDoors;
+	protected int trunkSize;
 	
 	// constructors
 	public Sedan(String make, String model, int vinNumber, String carType, int numDoors, int trunkSize) {

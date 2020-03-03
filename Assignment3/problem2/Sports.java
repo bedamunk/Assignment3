@@ -1,6 +1,7 @@
+package problem2;
 final class Sports extends Cars {
 	// instance variables
-	private int raceStats;
+	protected int raceStats;
 	
 	// constructors
 	public Sports(String make, String model, int vinNumber, String carType, int raceStats) {
