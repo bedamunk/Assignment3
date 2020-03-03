@@ -15,36 +15,39 @@ public class Cars {
 		protected String model;
 		protected int vinNumber;
 		
-		// private instance variables with aggregation type relationship
-		protected String carType;
+		// private instance variable with aggregation type relationship
+		protected CarOwners owner;
+		
+		public Cars() {
+			
+		}
 		
 		// constructor takes make model vinNumber and carType
-		public Cars(String make, String model, int vinNumber, String carType) {
+		public Cars(String make, String model, int vinNumber, CarOwners owner) {
 			// set variables equal to the user input
 			this.make = make;
 			this.model = model;
 			this.vinNumber = vinNumber;
-			this.carType = carType;
+			this.owner = owner;
 		}
 		// setters**************************************************************
 		
 		// setter method to set private data field make
-		public void setMake(String newMake) {
-			this.make = newMake;
+		public void setMake(String make) {
+			this.make = make;
 		}
 		// setter method to set private data field model
-		public void setModel(String newModel) {
-			this.model = newModel;
-				}
+		public void setModel(String model) {
+			this.model = model;
+		}
 		// setter method to set private data field vinNumber
-		public void setVinNumber(int newVinNumber) {
-			this.vinNumber = newVinNumber;
-				}
-		// setter method to set private data field carType
-		public void setCarType(String newCarType) {
-			this.carType = newCarType;
-				}
-		
+		public void setVinNumber(int vinNumber) {
+			this.vinNumber = vinNumber;
+		}
+		// setter method to set protected data field owner
+		public void setOwner(CarOwners owner) {
+			this.owner = owner;
+		}
 		
 		// getters**************************************************************
 		
@@ -60,15 +63,15 @@ public class Cars {
 		public int getVinNumber() {
 			return this.vinNumber;
 		}
-		// getter method to return private data field carType
-		public String getCarType() {
-			return this.carType;
+		// setter method to set protected data field owner
+		public CarOwners getOwner() {
+			return this.owner;
 		}
 		
 		// toString method
 		public String toString() {
-			String carinfo = "\nCar information: /nVin Number: " + vinNumber + "/nCar Type: " + carType + "/nMake: " + make + 
-			"/nModel: " + model;
+			String carinfo = owner.toString()+ "\nVin Number: " + vinNumber + "\nMake: " + make + 
+			"\nModel: " + model;
 			return carinfo;
 		}
 	
