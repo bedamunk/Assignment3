@@ -135,12 +135,13 @@ public class UseCars {
 		
 		for (Cars search : carsArray) {			
 			if(search.getVinNumber() == vinSearchNumber) {
-				vinSearchCarResults = search.toString();
+				vinSearchCarResults = "Your search on vin number " + vinSearchNumber + " yielded the following information: \n ------------------------------------------------\n" + search.toString();
 			}
 		}
 		return vinSearchCarResults;
 	}
-	
+	// !!!CREATE Could consider printing this information in a different format
+	// !!!possibly in table format and possibly useing getters to place information precisely
 	public static void displayCarsArrayInfo() {
 		System.out.println("Here is a list of cars currently in the system.");
 		for (Cars getThatInfo : carsArray) {
