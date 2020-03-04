@@ -1,4 +1,4 @@
-package problem2;
+
 
 final class Sports extends Cars {
 	// instance variables
