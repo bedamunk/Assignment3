@@ -50,8 +50,17 @@ public class UseCars {
 		carsArray.add(getNewSedanCarInfo());
 		// Search for a particular car and display its information 
 		System.out.println(vinNumberSearch());
+		Scanner searchAgainInput = new Scanner(System.in);
+		System.out.println("Would you like to search again? Enter 1 to search again.  Enter any other integer to continue without searching. ");
+		int searchAgain = searchAgainInput.nextInt();
+			while(searchAgain == 1) {
+				System.out.println(vinNumberSearch());
+				System.out.println("Would you like to search again? Enter 1 to search again.  Enter any other integer to continue without searching. ");
+				searchAgain = searchAgainInput.nextInt();
+			}
+	
 				
-		// final stop is displaying all the cars that are currently stored in the list
+		// display all the cars that are currently stored in the list
 		displayCarsArrayInfo();
 	
 	}
@@ -60,8 +69,11 @@ public class UseCars {
 	public String getNewOwner() {
 		CarOwners newOwner1 = new CarOwners();
         System.out.println("Ok, let's gather some information about the new car owner.");
-        System.out.println("Please enter the car owner's first and last name: ");
-        String name = input.next();
+        System.out.println("Please enter the car owner's first name: ");
+        String firstName = input.next();
+        System.out.println("Please enter the car owner's last name: ");
+        String lastName = input.next();
+        String name = firstName + lastName;
         newOwner1.setName(name);
         System.out.println("Thank you.  Now please enter the car owner's address: ");
         String address = input.next();
@@ -86,14 +98,23 @@ public class UseCars {
 		System.out.println("Please enter the model: ");
 		String model = sportsInput.next();
 		newCar.setModel(model);
-		System.out.println("Please enter the vin number (any number between 11 and 2147483647: ");
+		System.out.println("Please enter the vin number (an integer value): ");
 		int vinNumber = sportsInput.nextInt();
+		for (Cars search : carsArray) {			
+			while(search.getVinNumber() == vinNumber) {
+				System.out.println("Sorry, " +  vinNumber + " is taken.  Pleae enter a different integer for the vin number: ");
+				vinNumber = sportsInput.nextInt();
+			}
+		}
 		newCar.setVinNumber(vinNumber);
 		System.out.println("Please enter the number of seconds needed for the car to reach 60mph from resting: ");
 		int raceStats = sportsInput.nextInt();
 		newCar.setRaceStats(raceStats);
-		System.out.println("Please enter the name of the owner for this car: ");
-		String carOwnerName = sportsInput.next();
+		System.out.println("Please enter the car owner's first name: ");
+        String firstName = sportsInput.next();
+        System.out.println("Please enter the car owner's last name: ");
+        String lastName = sportsInput.next();
+        String carOwnerName = firstName + lastName;
 		System.out.println("Please enter the address of the owner for this car: ");
 		String carOwnerAddress = sportsInput.next();
 		CarOwners carOwnerz = new CarOwners();
@@ -117,8 +138,14 @@ public class UseCars {
 		System.out.println("Please ener the model: ");
 		String model = sedanInput.next();
 		newCar.setModel(model);
-		System.out.println("Please enterthe vin number (any number between 11 and 2147483647: ");
+		System.out.println("Please enter the vin number (an integer value): ");
 		int vinNumber = sedanInput.nextInt();
+		for (Cars search : carsArray) {			
+			while(search.getVinNumber() == vinNumber) {
+				System.out.println("Sorry, " +  vinNumber + " is taken.  Pleae enter a different integer for the vin number: ");
+				vinNumber = sedanInput.nextInt();
+			}
+		}
 		newCar.setVinNumber(vinNumber);
 		System.out.println("Please enter the number of doors: ");
 		int numDoors = sedanInput.nextInt();
@@ -126,8 +153,11 @@ public class UseCars {
 		System.out.println("Please enter the number of shoes that should fit in the trunk: ");
 		int trunkSize = sedanInput.nextInt();
 		newCar.setTrunkSize(trunkSize);
-		System.out.println("Please enter the name of the owner for this car: ");
-		String carOwnerName = sedanInput.next();
+		System.out.println("Please enter the car owner's first name: ");
+        String firstName = sedanInput.next();
+        System.out.println("Please enter the car owner's last name: ");
+        String lastName = sedanInput.next();
+        String carOwnerName = firstName + lastName;
 		System.out.println("Please enter the address of the owner for this car: ");
 		String carOwnerAddress = sedanInput.next();
 		CarOwners carOwnerz = new CarOwners();
@@ -146,14 +176,17 @@ public class UseCars {
 		Scanner vinNumberInput = new Scanner(System.in);
 		System.out.println("Please enter a Vin Number (any number from 1 to 2147483647) to search for a car: ");
 		int vinSearchNumber = vinNumberInput.nextInt();
-		
-		// !!!CREATE test for proper input to avoid termination
-		
-		// !!!CREATE loop to search for existence of vin number and ask again if it doesn't exist
+		while (vinSearchNumber<=0 || vinSearchNumber >2147483647) {
+			System.out.print(vinSearchNumber + " is not within acceptable limits for a vin number. \nPlease enter a value from 1 to 2147483647: ");
+			vinSearchNumber = vinNumberInput.nextInt();
+		}
 		
 		for (Cars search : carsArray) {			
 			if(search.getVinNumber() == vinSearchNumber) {
 				vinSearchCarResults = "Your search on vin number " + vinSearchNumber + " yielded the following information: \n ------------------------------------------------\n" + search.toString();
+			}
+			if (vinSearchCarResults.isEmpty() == true){
+				vinSearchCarResults = "Your search on vin number " + vinSearchNumber + " yielded no results.";
 			}
 		}
 		return vinSearchCarResults;
