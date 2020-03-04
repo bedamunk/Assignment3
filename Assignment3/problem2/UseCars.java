@@ -1,3 +1,5 @@
+package problem2;
+
 import java.util.ArrayList;
 import java.util.*;
 
@@ -56,19 +58,17 @@ public class UseCars {
 	
 	// Create a method that requests information about a new car owner
 	public String getNewOwner() {
-        // Request account ID from user
+		CarOwners newOwner1 = new CarOwners();
         System.out.println("Ok, let's gather some information about the new car owner.");
         System.out.println("Please enter the car owner's first and last name: ");
         String name = input.next();
+        newOwner1.setName(name);
         System.out.println("Thank you.  Now please enter the car owner's address: ");
         String address = input.next();
-        
-        CarOwners newOwner1 = new CarOwners(name, address);
-        sportsCarCounter ++;
+        newOwner1.setAddress(address);
         // return a reference of a newly instantiated owner
         String newCarOwnerInfo = newOwner1.toString();
         return newCarOwnerInfo;
-        
 	}
 
 	
@@ -77,21 +77,30 @@ public class UseCars {
 	*/
 	// !!!CREATE tests for proper input for each of these prompts to avoid termination
 	public static Sports getNewSportsCarInfo() {
+		Sports newCar = new Sports();
 		Scanner sportsInput = new Scanner(System.in);
 		System.out.println("Time to enter information about a new sports car.");
 		System.out.println("Please enter the make: ");
 		String make = sportsInput.next();
+		newCar.setMake(make);
 		System.out.println("Please enter the model: ");
 		String model = sportsInput.next();
+		newCar.setModel(model);
 		System.out.println("Please enter the vin number (any number between 11 and 2147483647: ");
 		int vinNumber = sportsInput.nextInt();
+		newCar.setVinNumber(vinNumber);
 		System.out.println("Please enter the number of seconds needed for the car to reach 60mph from resting: ");
 		int raceStats = sportsInput.nextInt();
+		newCar.setRaceStats(raceStats);
 		System.out.println("Please enter the name of the owner for this car: ");
-		String carOwner = sportsInput.next();
+		String carOwnerName = sportsInput.next();
+		System.out.println("Please enter the address of the owner for this car: ");
+		String carOwnerAddress = sportsInput.next();
 		CarOwners carOwnerz = new CarOwners();
-		carOwnerz.setName(carOwner);
-		Sports newCar = new Sports(make, model, vinNumber, raceStats, carOwnerz);
+		carOwnerz.setName(carOwnerName);
+		carOwnerz.setAddress(carOwnerAddress);
+		newCar.setOwner(carOwnerz);
+		
 		System.out.println();
 		return newCar;
 	}
@@ -99,30 +108,39 @@ public class UseCars {
 	// Create another method that does exactly the same but for sedan cars
 	// !!!CREATE tests for proper input for each of these prompts to avoid termination
 	public static Sedan getNewSedanCarInfo() {
+		Sedan newCar  = new Sedan();
 		Scanner sedanInput = new Scanner(System.in);
 		System.out.println("Time to enter information about a new sedan car.");
 		System.out.println("Please enter the make: ");
 		String make = sedanInput.next();
+		newCar.setMake(make);
 		System.out.println("Please ener the model: ");
 		String model = sedanInput.next();
+		newCar.setModel(model);
 		System.out.println("Please enterthe vin number (any number between 11 and 2147483647: ");
 		int vinNumber = sedanInput.nextInt();
+		newCar.setVinNumber(vinNumber);
 		System.out.println("Please enter the number of doors: ");
 		int numDoors = sedanInput.nextInt();
+		newCar.setNumDoors(numDoors);
 		System.out.println("Please enter the number of shoes that should fit in the trunk: ");
 		int trunkSize = sedanInput.nextInt();
+		newCar.setTrunkSize(trunkSize);
 		System.out.println("Please enter the name of the owner for this car: ");
-		String carOwner = sedanInput.next();
+		String carOwnerName = sedanInput.next();
+		System.out.println("Please enter the address of the owner for this car: ");
+		String carOwnerAddress = sedanInput.next();
 		CarOwners carOwnerz = new CarOwners();
-		carOwnerz.setName(carOwner);
-		Sedan newCar  = new Sedan(make, model, vinNumber, numDoors, trunkSize, carOwnerz);
+		carOwnerz.setName(carOwnerName);
+		carOwnerz.setAddress(carOwnerAddress);
+		newCar.setOwner(carOwnerz);
+		
 		System.out.println();
 		return newCar;
 	}
 	/* Create a method that would find and display the information about a given car
 	* based on a provided VIN number
 	*/
-	// obv need to build this out and remove this noooote.
 	public static String vinNumberSearch() {
 		String vinSearchCarResults = "";
 		Scanner vinNumberInput = new Scanner(System.in);
@@ -141,7 +159,7 @@ public class UseCars {
 		return vinSearchCarResults;
 	}
 	// !!!CREATE Could consider printing this information in a different format
-	// !!!possibly in table format and possibly useing getters to place information precisely
+	// !!!possibly in table format and possibly using getters to place information precisely
 	public static void displayCarsArrayInfo() {
 		System.out.println("Here is a list of cars currently in the system.");
 		for (Cars getThatInfo : carsArray) {
