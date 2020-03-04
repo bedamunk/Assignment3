@@ -1,7 +1,5 @@
-import problem2.Sedan;
-import problem2.Sports;
-import problem2.Cars;
-import java.util.ArrayList;
+package problem2;
+import java.util.*;
 
 
 public class testCars {
