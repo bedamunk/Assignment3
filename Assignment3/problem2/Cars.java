@@ -15,7 +15,7 @@ public class Cars {
 		protected String make;
 		protected String model;
 		protected int vinNumber;
-		
+		protected int year;
 		// private instance variable with aggregation type relationship
 		protected CarOwners owner;
 		
@@ -24,11 +24,12 @@ public class Cars {
 		}
 		
 		// constructor takes make model vinNumber and carType
-		public Cars(String make, String model, int vinNumber, CarOwners owner) {
+		public Cars(String make, String model, int vinNumber, int year, CarOwners owner) {
 			// set variables equal to the user input
 			this.make = make;
 			this.model = model;
 			this.vinNumber = vinNumber;
+			this.year = year;
 			this.owner = owner;
 		}
 		// setters**************************************************************

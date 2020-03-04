@@ -11,6 +11,9 @@ public class UseCars {
 	static ArrayList<Cars> carsArray = new ArrayList<Cars>();
 
 	public static void main(String[] args) {
+		
+		int stubYear = 1776;
+		
 		// create a few car owners
 		CarOwners owner1 = new CarOwners("Barbara Biscuit", "31 Spooner Street, Quahog, Rhode Island");
 		CarOwners owner2 = new CarOwners("Ingrid Jackson", "320 Fowler Street, Lynbrook, New York");
@@ -18,26 +21,26 @@ public class UseCars {
 		CarOwners owner4 = new CarOwners("Johny Madrid", "4 Privet Drive, Little Whinging");
 		CarOwners owner5 = new CarOwners("Bella Lovelace", "510 Glenview Drive, Detroit, Michigan");
 		// create a few sports cars
-		Sports car1 = new Sports("BMW", "M3", 1, 6, owner1);
+		Sports car1 = new Sports("BMW", "M3", 1, stubYear, 6, owner1);
 		carsArray.add(car1);
-		Sports car2 = new Sports("Chevrolet", "Carmaro", 2, 5, owner2);
+		Sports car2 = new Sports("Chevrolet", "Carmaro", 2, stubYear, 5, owner2);
 		carsArray.add(car2);
-		Sports car3 = new Sports("Ford", "Mustang", 3, 6, owner3);
+		Sports car3 = new Sports("Ford", "Mustang", 3, stubYear, 6, owner3);
 		carsArray.add(car3);
-		Sports car4 = new Sports("Mazda", "Miata", 4, 4, owner4);
+		Sports car4 = new Sports("Mazda", "Miata", 4, stubYear, 4, owner4);
 		carsArray.add(car4);
-		Sports car5 = new Sports("Nissan", "370z", 5, 5, owner5);
+		Sports car5 = new Sports("Nissan", "370z", 5, stubYear, 5, owner5);
 		carsArray.add(car5);
 		// create a few sedan cars
-		Sedan car6 = new Sedan("Toyota", "Avalon", 6, 4, 2, owner1);
+		Sedan car6 = new Sedan("Toyota", "Avalon", 6, stubYear, 4, 2, owner1);
 		carsArray.add(car6);
-		Sedan car7 = new Sedan("Audi", "A6", 7, 4, 3, owner1);
+		Sedan car7 = new Sedan("Audi", "A6", 7, stubYear, 4, 3, owner1);
 		carsArray.add(car7);
-		Sedan car8 = new Sedan("Genesis", "G70", 8, 4, 1, owner1);
+		Sedan car8 = new Sedan("Genesis", "G70", 8, stubYear, 4, 1, owner1);
 		carsArray.add(car8);
-		Sedan car9 = new Sedan("Porsche", "Panamera", 9, 4, 3, owner2);
+		Sedan car9 = new Sedan("Porsche", "Panamera", 9, stubYear, 4, 3, owner2);
 		carsArray.add(car9);
-		Sedan car10 = new Sedan("Nissan", "Versa", 10, 4, 2, owner1);
+		Sedan car10 = new Sedan("Nissan", "Versa", 10, stubYear, 4, 2, owner1);
 		carsArray.add(car10);
 		// Call method that gathers information for a new sports car and add it to the
 		// array list
