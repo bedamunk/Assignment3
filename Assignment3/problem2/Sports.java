@@ -9,8 +9,8 @@ final class Sports extends Cars {
 		
 	}
 	
-	public Sports(String make, String model, int vinNumber, int raceStats, CarOwners owner) {
-		super (make, model, vinNumber, owner);
+	public Sports(String make, String model, int year, int vinNumber, int raceStats, CarOwners owner) {
+		super (make, model, year, vinNumber, owner);
 		this.raceStats = raceStats;
 	}
 	
