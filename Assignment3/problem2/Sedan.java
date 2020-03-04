@@ -1,3 +1,4 @@
+package problem2;
 
 public final class Sedan extends Cars {
 	
