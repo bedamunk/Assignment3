@@ -4,14 +4,15 @@ import java.util.*;
 
 public class testCars {
 	
+	int stubYear = 1776;
 
 	public static void main(String[] args) {
 		CarOwners owner1 = new CarOwners("Barbara Biscuit", "31 Spooner Street, Quahog, Rhode Island");
 
 ArrayList<Cars> myList = new ArrayList<Cars>();
-Sports car1 = new Sports("Mazda", "Miata", 10, 55, owner1);
+Sports car1 = new Sports("Mazda", "Miata", 10, stubYear, 55, owner1);
 
-Sedan car2 = new Sedan("ClownCarsRUs", "The Biggest", 15, 5, 888, owner1);
+Sedan car2 = new Sedan("ClownCarsRUs", "The Biggest", 15, stubYear, 5, 888, owner1);
 
 myList.add(car1);
 myList.add(car2);
