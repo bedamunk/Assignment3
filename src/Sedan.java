@@ -11,11 +11,30 @@ public final class Sedan extends Cars {
 		this.numDoors = numDoors;
 		this.trunkSize = trunkSize;
 	}
+	
+	public Sedan() {
+		
+	}
+	
+	public int getNumDoors() {
+		return numDoors;
+	}
+
+	public void setNumDoors(int numDoors) {
+		this.numDoors = numDoors;
+	}
+
+	public int getTrunkSize() {
+		return trunkSize;
+	}
+
+	public void setTrunkSize(int trunkSize) {
+		this.trunkSize = trunkSize;
+	}
+	
 	@Override
 	public String toString() {
 		String sedancarinfo = super.toString() + "\nNumber of Doors: " + numDoors + "\nTrunk Size: " + trunkSize;
 		return sedancarinfo;
 	}
 }
-
-
