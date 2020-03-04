@@ -11,8 +11,8 @@ final class Sedan extends Cars {
 	}
 	
 	// constructors
-	public Sedan(String make, String model, int vinNumber, int numDoors, int trunkSize, CarOwners owner) {
-		super (make, model, vinNumber,owner);
+	public Sedan(String make, String model, int year, int vinNumber, int numDoors, int trunkSize, CarOwners owner) {
+		super (make, model, year, vinNumber,owner);
 		this.numDoors = numDoors;
 		this.trunkSize = trunkSize;
 	}
