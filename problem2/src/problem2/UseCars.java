@@ -129,7 +129,7 @@ public class UseCars {
         String firstName = sportsInput.next();
         System.out.println("Please enter the car owner's last name: ");
         String lastName = sportsInput.next();
-        String carOwnerName = firstName + lastName;
+        String carOwnerName = firstName + " " + lastName;
 		System.out.println("Please enter the address of the owner for this car: ");
 		String carOwnerAddress = sportsInput.next();
 		CarOwners carOwnerz = new CarOwners();
