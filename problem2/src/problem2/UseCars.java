@@ -76,13 +76,13 @@ public class UseCars {
 		CarOwners newOwner1 = new CarOwners();
         System.out.println("Ok, let's gather some information about the new car owner.");
         System.out.println("Please enter the car owner's first name: ");
-        String firstName = input.next();
+        String firstName = input.nextLine();
         System.out.println("Please enter the car owner's last name: ");
-        String lastName = input.next();
+        String lastName = input.nextLine();
         String name = firstName + " " + lastName;
         newOwner1.setName(name);
         System.out.println("Thank you.  Now please enter the car owner's address: ");
-        String address = input.next();
+        String address = input.nextLine();
         newOwner1.setAddress(address);
         // return a reference of a newly instantiated owner
         String newCarOwnerInfo = newOwner1.toString();
@@ -99,25 +99,25 @@ public class UseCars {
 		Scanner sportsInput = new Scanner(System.in);
 		System.out.println("Time to enter information about a new sports car.");
 		System.out.println("Please enter the make: ");
-		String make = sportsInput.next();
+		String make = sportsInput.nextLine();
 		newCar.setMake(make);
 		System.out.println("Please enter the model: ");
-		String model = sportsInput.next();
+		String model = sportsInput.nextLine();
 		newCar.setModel(model);
-		System.out.println("Please enter the year: ");
-		int year = sportsInput.nextInt();
+		int year;
+		do {
+			System.out.println("Please enter the model year (between 1886 and 2023) :");
+			while (!sportsInput.hasNextInt()) {
+				System.out.println ("That's not a year.  Please enter a year between 1886 and 2023 for the car: ");
+				sportsInput.next();
+			}year = sportsInput.nextInt();
+		} while (year < 1886 || year > 2023);
 		newCar.setYear(year);
-		while(year < 1886 || year > 2023) {
-			System.out.println("Sorry, " + year + " is not a car model we are able to register yet.  "
-					+ "\nPlease double check the year and enter a year between 1886 and 2023: ");
-			year = sportsInput.nextInt();
-		}
-		
-		System.out.println("Please enter the vin number (an integer value greater than 0): ");
+		System.out.println("Please enter the vin number (integer value): ");
 		int vinNumber = sportsInput.nextInt();
 		for (Cars search : carsArray) {			
 			while(search.getVinNumber() == vinNumber) {
-				System.out.println("Sorry, " +  vinNumber + " is taken.  Pleae enter a different integer for the vin number: ");
+				System.out.println("Sorry, " +  vinNumber + " is taken.  Please enter a different integer for the vin number: ");
 				vinNumber = sportsInput.nextInt();
 			}
 		}
@@ -126,12 +126,12 @@ public class UseCars {
 		int raceStats = sportsInput.nextInt();
 		newCar.setRaceStats(raceStats);
 		System.out.println("Please enter the car owner's first name: ");
-        String firstName = sportsInput.next();
+        String firstName = sportsInput.nextLine();
         System.out.println("Please enter the car owner's last name: ");
-        String lastName = sportsInput.next();
+        String lastName = sportsInput.nextLine();
         String carOwnerName = firstName + " " + lastName;
 		System.out.println("Please enter the address of the owner for this car: ");
-		String carOwnerAddress = sportsInput.next();
+		String carOwnerAddress = sportsInput.nextLine();
 		CarOwners carOwnerz = new CarOwners();
 		carOwnerz.setName(carOwnerName);
 		carOwnerz.setAddress(carOwnerAddress);
@@ -148,19 +148,21 @@ public class UseCars {
 		Scanner sedanInput = new Scanner(System.in);
 		System.out.println("Time to enter information about a new sedan car.");
 		System.out.println("Please enter the make: ");
-		String make = sedanInput.next();
+		String make = sedanInput.nextLine();
 		newCar.setMake(make);
 		System.out.println("Please ener the model: ");
-		String model = sedanInput.next();
+		String model = sedanInput.nextLine();
 		newCar.setModel(model);
-		System.out.println("Please enter the year: ");
-		int year = sedanInput.nextInt();
+		int year;
+		do {
+			System.out.println("Please enter the model year (between 1886 and 2023) :");
+			while (!sedanInput.hasNextInt()) {
+				System.out.println ("That's not a year.  Please enter a year between 1886 and 2023 for the car: ");
+				sedanInput.next();
+			}year = sedanInput.nextInt();
+		} while (year < 1886 || year > 2023);
 		newCar.setYear(year);
-		while(year < 1886 || year > 2023) {
-			System.out.println("Sorry, " + year + " is not a car model we are able to register yet.  "
-					+ "\nPlease double check the year and enter a year between 1886 and 2023: ");
-			year = sedanInput.nextInt();
-		}
+		
 		System.out.println("Please enter the vin number (an integer value): ");
 		int vinNumber = sedanInput.nextInt();
 		for (Cars search : carsArray) {			
@@ -173,16 +175,16 @@ public class UseCars {
 		System.out.println("Please enter the number of doors: ");
 		int numDoors = sedanInput.nextInt();
 		newCar.setNumDoors(numDoors);
-		System.out.println("Please enter the number of shoes that should fit in the trunk: ");
+		System.out.println("Please enter the cubic feet for the trunk size: ");
 		int trunkSize = sedanInput.nextInt();
 		newCar.setTrunkSize(trunkSize);
 		System.out.println("Please enter the car owner's first name: ");
-        String firstName = sedanInput.next();
+        String firstName = sedanInput.nextLine();
         System.out.println("Please enter the car owner's last name: ");
-        String lastName = sedanInput.next();
+        String lastName = sedanInput.nextLine();
         String carOwnerName = firstName + lastName;
 		System.out.println("Please enter the address of the owner for this car: ");
-		String carOwnerAddress = sedanInput.next();
+		String carOwnerAddress = sedanInput.nextLine();
 		CarOwners carOwnerz = new CarOwners();
 		carOwnerz.setName(carOwnerName);
 		carOwnerz.setAddress(carOwnerAddress);
