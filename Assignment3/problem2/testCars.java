@@ -1,5 +1,7 @@
 package problem2;
+
 import java.util.*;
+
 
 
 public class testCars {
@@ -10,9 +12,11 @@ public class testCars {
 		CarOwners owner1 = new CarOwners("Barbara Biscuit", "31 Spooner Street, Quahog, Rhode Island");
 
 ArrayList<Cars> myList = new ArrayList<Cars>();
-Sports car1 = new Sports("Mazda", "Miata", 10, stubYear, 55, owner1);
 
-Sedan car2 = new Sedan("ClownCarsRUs", "The Biggest", 15, stubYear, 5, 888, owner1);
+Sports car1 = new Sports("Mazda", "Miata", 2008, 10, 55, owner1);
+
+Sedan car2 = new Sedan("ClownCarsRUs", "The Biggest", 2020, 15, 5, 888, owner1);
+
 
 myList.add(car1);
 myList.add(car2);

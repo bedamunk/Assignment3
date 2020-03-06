@@ -14,6 +14,7 @@ public class Cars {
 		// private instance variables
 		protected String make;
 		protected String model;
+		protected int year;
 		protected int vinNumber;
 		protected int year;
 		// private instance variable with aggregation type relationship
@@ -24,7 +25,9 @@ public class Cars {
 		}
 		
 		// constructor takes make model vinNumber and carType
-		public Cars(String make, String model, int vinNumber, int year, CarOwners owner) {
+
+		public Cars(String make, String model, int year, int vinNumber, CarOwners owner) {
+
 			// set variables equal to the user input
 			this.make = make;
 			this.model = model;
@@ -41,6 +44,10 @@ public class Cars {
 		// setter method to set private data field model
 		public void setModel(String model) {
 			this.model = model;
+		}
+		// setter method to set private data field model
+		public void setYear(int year) {
+			this.year = year;
 		}
 		// setter method to set private data field vinNumber
 		public void setVinNumber(int vinNumber) {
@@ -60,6 +67,10 @@ public class Cars {
 		// getter method to return private data field model
 		public String getModel() {
 			return this.model;
+		}
+		// getter method to return private data field model
+		public int getYear() {
+			return this.year;
 		}
 		// getter method to return private data field vinNumber
 		public int getVinNumber() {
