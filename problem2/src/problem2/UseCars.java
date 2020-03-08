@@ -9,15 +9,21 @@ public class UseCars {
     Scanner input = new Scanner(System.in);
     // Create an ArrayList that stores references of any type of cars
  	static ArrayList<Cars> carsArray = new ArrayList<Cars>();
+ 	static ArrayList<CarOwners> ownersArray = new ArrayList<CarOwners>();
 
 	public static void main(String[] args) {
 		
 		// create a few car owners
 		CarOwners owner1 = new CarOwners("Barbara Biscuit", "31 Spooner Street, Quahog, Rhode Island");
+		ownersArray.add(owner1);
 		CarOwners owner2 = new CarOwners("Ingrid Jackson", "320 Fowler Street, Lynbrook, New York");
+		ownersArray.add(owner2);
 		CarOwners owner3 = new CarOwners("Darius Stone", "1640 Riverside Drive, Hill Valley, California");
+		ownersArray.add(owner3);
 		CarOwners owner4 = new CarOwners("Johny Madrid", "4 Privet Drive, Little Whinging");
+		ownersArray.add(owner4);
 		CarOwners owner5 = new CarOwners("Bella Lovelace", "510 Glenview Drive, Detroit, Michigan");
+		ownersArray.add(owner5);
 				
 		// create a few sports cars
 		Sports car1 = new Sports("BMW", "M3", 2017, 1, 6, owner1);
@@ -43,16 +49,23 @@ public class UseCars {
 		Sedan car10 = new Sedan("Nissan", "Versa", 2018, 10, 4, 2, owner1);
 		carsArray.add(car10);
 		
-		// Call method that gathers information for a new sports car and add it to the array list
+		// Call method that gathers information for a new sports car 
+		// and add it to the cars array list
 		carsArray.add(getNewSportsCarInfo());
 		
-		// Call method that gathers information for a new sedan car and add it to the array list
+		// Call method that gathers information for a new sedan car 
+		//and add it to the cars array list
 		carsArray.add(getNewSedanCarInfo());
+		
 		// Search for a particular car and display its information 
 		System.out.println(vinNumberSearch());
 		Scanner searchAgainInput = new Scanner(System.in);
 		System.out.println("--------------------------------------");
 		System.out.println("Would you like to search again? Enter 1 to search again.  \nEnter any other integer to continue without searching. ");
+		while (!searchAgainInput.hasNextInt()) {
+			System.out.println("That input was incorrect.  \nPlease enter 1 to search again.  \nEnter any other integer to continue without searching. ");
+			searchAgainInput.next();
+		}
 		int searchAgain = searchAgainInput.nextInt();
 			while(searchAgain == 1) {
 				System.out.println(vinNumberSearch());
@@ -72,21 +85,25 @@ public class UseCars {
 	}
 	
 	// Create a method that requests information about a new car owner
-	public String getNewOwner() {
-		CarOwners newOwner1 = new CarOwners();
+	public static CarOwners getNewOwner() {
+		Scanner ownerInput = new Scanner(System.in);
+		CarOwners newOwner = new CarOwners();
         System.out.println("Ok, let's gather some information about the new car owner.");
+        System.out.println("----------------------------------------");
+        System.out.println("----------------------------------------");
         System.out.println("Please enter the car owner's first name: ");
-        String firstName = input.nextLine();
+        String firstName = ownerInput.nextLine();
         System.out.println("Please enter the car owner's last name: ");
-        String lastName = input.nextLine();
+        String lastName = ownerInput.nextLine();
         String name = firstName + " " + lastName;
-        newOwner1.setName(name);
+        newOwner.setName(name);
         System.out.println("Thank you.  Now please enter the car owner's address: ");
-        String address = input.nextLine();
-        newOwner1.setAddress(address);
+        String address = ownerInput.nextLine();
+        newOwner.setAddress(address);
         // return a reference of a newly instantiated owner
-        String newCarOwnerInfo = newOwner1.toString();
-        return newCarOwnerInfo;
+        String newCarOwnerInfo = newOwner.toString();
+        return newOwner;
+       
 	}
 
 	
@@ -111,35 +128,72 @@ public class UseCars {
 				System.out.println ("That's not a year.  Please enter a year between 1886 and 2023 for the car: ");
 				sportsInput.next();
 			}year = sportsInput.nextInt();
+			// advances scanner to next line after nextInt()
+			sportsInput.nextLine();
 		} while (year < 1886 || year > 2023);
 		newCar.setYear(year);
 		System.out.println("Please enter the vin number (integer value): ");
 		int vinNumber = sportsInput.nextInt();
+		// advances scanner to next line after nextInt()
+		sportsInput.nextLine();
 		for (Cars search : carsArray) {			
 			while(search.getVinNumber() == vinNumber) {
 				System.out.println("Sorry, " +  vinNumber + " is taken.  Please enter a different integer for the vin number: ");
 				vinNumber = sportsInput.nextInt();
+				// advances scanner to next line after nextInt()
+				sportsInput.nextLine();
 			}
 		}
 		newCar.setVinNumber(vinNumber);
 		System.out.println("Please enter the number of seconds needed for the car to reach 60mph from resting: ");
 		int raceStats = sportsInput.nextInt();
+		// advances scanner to next line after nextInt()
+		sportsInput.nextLine();
 		newCar.setRaceStats(raceStats);
-		System.out.println("Please enter the car owner's first name: ");
-        String firstName = sportsInput.nextLine();
-        System.out.println("Please enter the car owner's last name: ");
-        String lastName = sportsInput.nextLine();
-        String carOwnerName = firstName + " " + lastName;
-		System.out.println("Please enter the address of the owner for this car: ");
-		String carOwnerAddress = sportsInput.nextLine();
-		CarOwners carOwnerz = new CarOwners();
-		carOwnerz.setName(carOwnerName);
-		carOwnerz.setAddress(carOwnerAddress);
-		newCar.setOwner(carOwnerz);
-		
-		System.out.println();
+		System.out.println("Is this car owned by someone already registered as a car owner? ");
+		System.out.println("(1)Press 1 for yes and to search for that owner.");
+		System.out.println("----");
+		System.out.println("OR");
+		System.out.println("----");
+		System.out.println("(2)Press any other integer for no and to create a new owner in the system: ");
+		int ownerType = sportsInput.nextInt();
+		// advances scanner to next line after nextInt()
+		sportsInput.nextLine();
+		String carOwnerSearchResults = "";
+		if (ownerType == 1){
+			System.out.println("Ok, lets search for the owner." + 
+		"\nPlease enter the first and last name of the owner separated by a space." 
+					+ "This must be an exact match: ");
+			String ownerSearchString = sportsInput.nextLine();
+			
+			for (CarOwners search : ownersArray) {	
+				String ownerSearchName = search.getName();
+				if(ownerSearchName.contentEquals(ownerSearchString)) {
+					carOwnerSearchResults = "Your search on name: " + ownerSearchString + " yielded the following information: \n ------------------------------------------------\n" + search.toString() + 
+							"\n" + ownerSearchString + " will be registered as the owner of this car.";
+					newCar.setOwner(search);
+					System.out.println(carOwnerSearchResults);
+				}
+				if (carOwnerSearchResults.isEmpty() == true){
+					carOwnerSearchResults = "Your search on name: " + ownerSearchString + " yielded no results.";
+					System.out.println(carOwnerSearchResults);
+					System.out.println("Let's go ahead and create a new owner to register in the system for this car.");
+					
+					newCar.setOwner(getNewOwner());
+				}
+				
+			}
+			
+			
+			
+		}
+		else if (ownerType != 1) {
+			newCar.setOwner(getNewOwner());
+			
+		}
 		return newCar;
-	}
+			
+		}
 	
 	// Create another method that does exactly the same but for sedan cars
 	// !!!CREATE tests for proper input for each of these prompts to avoid termination
@@ -153,6 +207,7 @@ public class UseCars {
 		System.out.println("Please ener the model: ");
 		String model = sedanInput.nextLine();
 		newCar.setModel(model);
+		//*******************
 		int year;
 		do {
 			System.out.println("Please enter the model year (between 1886 and 2023) :");
@@ -160,39 +215,76 @@ public class UseCars {
 				System.out.println ("That's not a year.  Please enter a year between 1886 and 2023 for the car: ");
 				sedanInput.next();
 			}year = sedanInput.nextInt();
+			// advances scanner to next line after nextInt()
+			sedanInput.nextLine();
 		} while (year < 1886 || year > 2023);
 		newCar.setYear(year);
 		
 		System.out.println("Please enter the vin number (an integer value): ");
 		int vinNumber = sedanInput.nextInt();
+		sedanInput.nextLine();
 		for (Cars search : carsArray) {			
 			while(search.getVinNumber() == vinNumber) {
-				System.out.println("Sorry, " +  vinNumber + " is taken.  Pleae enter a different integer for the vin number: ");
+				System.out.println("Sorry, " +  vinNumber + " is taken.  Please enter a different integer for the vin number: ");
 				vinNumber = sedanInput.nextInt();
+				// advances scanner to next line after nextInt()
+				sedanInput.nextLine();
 			}
 		}
 		newCar.setVinNumber(vinNumber);
 		System.out.println("Please enter the number of doors: ");
 		int numDoors = sedanInput.nextInt();
+		// advances scanner to next line after nextInt()
+		sedanInput.nextLine();
 		newCar.setNumDoors(numDoors);
 		System.out.println("Please enter the cubic feet for the trunk size: ");
 		int trunkSize = sedanInput.nextInt();
+		// advances scanner to next line after nextInt()
+		sedanInput.nextLine();
 		newCar.setTrunkSize(trunkSize);
-		System.out.println("Please enter the car owner's first name: ");
-        String firstName = sedanInput.nextLine();
-        System.out.println("Please enter the car owner's last name: ");
-        String lastName = sedanInput.nextLine();
-        String carOwnerName = firstName + lastName;
-		System.out.println("Please enter the address of the owner for this car: ");
-		String carOwnerAddress = sedanInput.nextLine();
-		CarOwners carOwnerz = new CarOwners();
-		carOwnerz.setName(carOwnerName);
-		carOwnerz.setAddress(carOwnerAddress);
-		newCar.setOwner(carOwnerz);
-		
-		System.out.println();
+		System.out.println("Is this car owned by someone already registered as a car owner? ");
+		System.out.println("(1)Press 1 for yes and to search for that owner.");
+		System.out.println("----");
+		System.out.println("OR");
+		System.out.println("----");
+		System.out.println("(2)Press any other integer for no and to create a new owner in the system: ");
+		int ownerType = sedanInput.nextInt();
+		// advances scanner to next line after nextInt()
+		sedanInput.nextLine();
+		String carOwnerSearchResults = "";
+		if (ownerType == 1){
+			System.out.println("Ok, lets search for the owner." + 
+		"\nPlease enter the first and last name of the owner separated by a space." 
+					+ "This must be an exact match: ");
+			String ownerSearchString = sedanInput.nextLine();
+			
+			for (CarOwners search : ownersArray) {	
+				String ownerSearchName = search.getName();
+				if(ownerSearchName.contentEquals(ownerSearchString)) {
+					carOwnerSearchResults = "Your search on name: " + ownerSearchString + " yielded the following information: \n ------------------------------------------------\n" + search.toString() + 
+							"\n" + ownerSearchString + " will be registered as the owner of this car.";
+					newCar.setOwner(search);
+					System.out.println(carOwnerSearchResults);
+				}
+				if (carOwnerSearchResults.isEmpty() == true){
+					carOwnerSearchResults = "Your search on name: " + ownerSearchString + " yielded no results.";
+					System.out.println(carOwnerSearchResults);
+					System.out.println("Let's go ahead and create a new owner to register in the system for this car.");
+					
+					newCar.setOwner(getNewOwner());
+				}
+				
+			}
+			
+
+		}
+		else if (ownerType != 1) {
+			newCar.setOwner(getNewOwner());
+			
+		}
 		return newCar;
-	}
+			
+		}
 	/* Create a method that would find and display the information about a given car
 	* based on a provided VIN number
 	*/
