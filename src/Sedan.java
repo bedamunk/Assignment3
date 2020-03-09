@@ -6,8 +6,8 @@ final class Sedan extends Cars {
 	private int numDoors;
 	private int trunkSize;
 	
-	public Sedan() {
-		
+	public Sedan(CarOwners owner) {//  since parent class no longer has argless, the child can't either
+		super (owner);
 	}
 	
 	// constructors
