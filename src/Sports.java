@@ -5,8 +5,8 @@ final class Sports extends Cars {
 	private int raceStats;
 	
 	// constructors
-	public Sports() {
-		
+	public Sports(CarOwners owner) { // since parent class doesn't have argless, neither can this one
+		super (owner);
 	}
 	
 	public Sports(String make, String model, int year, int vinNumber, int raceStats, CarOwners owner) {
