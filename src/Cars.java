@@ -20,7 +20,7 @@ public class Cars {
 		// private instance variable with aggregation type relationship
 		protected CarOwners owner;
 		
-		public Cars() {
+		public Cars(CarOwners owner) { // i agree we need a constructor with the least amount of constructors possible, but if we have a totally arg-less one than it would be possible to create a car without an owner
 			
 		}
 		
@@ -80,8 +80,8 @@ public class Cars {
 		
 		// toString method
 		public String toString() {
-			String carinfo = owner.toString()+ "\nVin Number: " + vinNumber + "\nMake: " + make + 
-			"\nModel: " + model;
+			String carinfo = "Owner: " + owner.toString()+ "\nVin Number: " + vinNumber + "\nMake: " + make + 
+			"\nModel: " + model; // added "Owner: " to string since all the other variables have a descriptor before them
 			return carinfo;
 		}
 	
