@@ -49,13 +49,17 @@ public class UseCars {
 		Sedan car10 = new Sedan("Nissan", "Versa", 2018, 10, 4, 2, owner1);
 		carsArray.add(car10);
 		
+		
+		// add a "shell"/"stub" owner to fill in args for creating objects of type or subtype cars
+		CarOwners defOwner = new CarOwners();
+		
 		// Call method that gathers information for a new sports car 
 		// and add it to the cars array list
-		carsArray.add(getNewSportsCarInfo());
+		carsArray.add(getNewSportsCarInfo(defOwner)); // add arg
 		
 		// Call method that gathers information for a new sedan car 
 		//and add it to the cars array list
-		carsArray.add(getNewSedanCarInfo());
+		carsArray.add(getNewSedanCarInfo(defOwner)); // add arg
 		
 		// Search for a particular car and display its information 
 		System.out.println(vinNumberSearch());
@@ -111,8 +115,8 @@ public class UseCars {
 	* The method will instantiate a sports car and adds it to the array list. 
 	*/
 	// !!!CREATE tests for proper input for each of these prompts to avoid termination
-	public static Sports getNewSportsCarInfo() {
-		Sports newCar = new Sports();
+	public static Sports getNewSportsCarInfo(CarOwners owner) { //add args
+		Sports newCar = new Sports(owner); // add args
 		Scanner sportsInput = new Scanner(System.in);
 		System.out.println("Time to enter information about a new sports car.");
 		System.out.println("Please enter the make: ");
@@ -197,8 +201,8 @@ public class UseCars {
 	
 	// Create another method that does exactly the same but for sedan cars
 	// !!!CREATE tests for proper input for each of these prompts to avoid termination
-	public static Sedan getNewSedanCarInfo() {
-		Sedan newCar  = new Sedan();
+	public static Sedan getNewSedanCarInfo(CarOwners owner) { // add args
+		Sedan newCar  = new Sedan(owner); // add args
 		Scanner sedanInput = new Scanner(System.in);
 		System.out.println("Time to enter information about a new sedan car.");
 		System.out.println("Please enter the make: ");
